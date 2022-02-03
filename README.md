@@ -6,7 +6,7 @@ We use [Mapbox](https://www.mapbox.com/showcase) to show activites on it in a dy
 
 Mapbox is a location data platform that powers the maps and location services used in many popular apps. 
 
-- One of the powerful tools of mapbox is that it includes [Mapbox GL JS](https://docs.mapbox.com/mapbox-gl-js/guides/) and [Mapbox Studio] (https://studio.mapbox.com) which enables us to do :
+- One of the powerful tools of mapbox is that it includes [Mapbox GL JS](https://docs.mapbox.com/mapbox-gl-js/guides/) and [Mapbox Studio](https://studio.mapbox.com) which enables us to do :
 - ✅ Visualizing and animating geographic data.
 - ✅ Easy to use and there is no system dependency ( you can use it with Andriod / IOS ) to perform changes on the map.
 - ✅ Querying and filtering features on a map.
