@@ -8,7 +8,7 @@ Mapbox is a location data platform that powers the maps and location services us
 
 - One of the powerful tools of mapbox is that it includes a JavaScript library that uses WebGL to render interactive maps from vector tiles and Mapbox styles called [Mapbox GL JS](https://docs.mapbox.com/mapbox-gl-js/guides/) and [Mapbox Studio](https://studio.mapbox.com) which enables us to do :
 - ✅ Visualizing and animating geographic data.
-- ✅ Easy to use and there is no system dependency ( you can use it with Andriod / IOS ) to perform changes on the map.
+- ✅ Easy to use and there is no system dependency. Easy to run and perform changes for the data on the map in various platforms (e.g. Andriod , IOS and Web) synchronously.
 - ✅ Querying and filtering features on a map.
 - ✅ Placing the data between layers of a Mapbox style.
 - ✅ Dynamically displaying and styling custom client-side data on a map.
