@@ -14,6 +14,8 @@ Mapbox is a location data platform that powers the maps and location services us
 - ✅ Dynamically displaying and styling custom client-side data on a map.
 - ✅ Doing 3D data visualizations and animations
 - ✅ Adding markers and popups to maps programmatically.
+
+
 - ⚠️ Mapbox has a limit for using the platform depends on the data size and how many active users using the map monthly. Up to 25000 active user monthly is free, afterwards an subscription agreement should be done. The [Pricelist](https://www.mapbox.com/pricing) shows all cases in detail.
 
 
