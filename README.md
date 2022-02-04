@@ -15,7 +15,7 @@ Mapbox is a location data platform that powers the maps and location services us
 -  Doing 3D data visualizations and animations
 -  Adding markers and popups to maps programmatically.
 
-Database: The database for the visualized data to be stored in GeoJson format. 
+The database for the visualized data to be stored in GeoJson format and stored in WFC Datacenter.
 
 We use tools like [geojson-pick](https://github.com/node-geojson/geojson-pick) to remove unused properties and [geojson-precision](https://github.com/perrygeo/geojson-precision) to limit the number of decimal places for coordinates, also to reduce the size of the datafile. Not only is the file much smaller, but the map rendering will be noticeably quicker and smoother.
 
