@@ -19,9 +19,8 @@ Mapbox is a location data platform that powers the maps and location services us
 - ⚠️ Mapbox has a limit for using the platform depends on the data size and how many active users using the map monthly. Up to 25000 active user monthly is free, afterwards an subscription agreement should be done. The [Pricelist](https://www.mapbox.com/pricing) shows all cases in detail.
 
 
-
 ## Setup
 
-All you have to do is to git pull on the branch main for WFC_map.
+- git pull on the branch main for WFC_map.
 
 The code will start to show the map index directly based on the [token](https://docs.mapbox.com/help/getting-started/access-tokens/) which enables the map to connect with the data stored in mapbox platform.
