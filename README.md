@@ -6,7 +6,7 @@ We use [Mapbox](https://www.mapbox.com/showcase) to show the data on the map in 
 
 Mapbox is a location data platform that powers the maps and location services used in many popular apps. 
 
-- One of the powerful tools of mapbox is that it includes a A JavaScript library that uses WebGL to render interactive maps from vector tiles and Mapbox styles called [Mapbox GL JS](https://docs.mapbox.com/mapbox-gl-js/guides/) and [Mapbox Studio](https://studio.mapbox.com) which enables us to do :
+- One of the powerful tools of mapbox is that it includes a JavaScript library that uses WebGL to render interactive maps from vector tiles and Mapbox styles called [Mapbox GL JS](https://docs.mapbox.com/mapbox-gl-js/guides/) and [Mapbox Studio](https://studio.mapbox.com) which enables us to do :
 - ✅ Visualizing and animating geographic data.
 - ✅ Easy to use and there is no system dependency ( you can use it with Andriod / IOS ) to perform changes on the map.
 - ✅ Querying and filtering features on a map.
