@@ -2,7 +2,7 @@
 # # Dynamic webmap for World for Climate on Mapbox
 
 
-We use [Mapbox](https://www.mapbox.com/showcase) to show activites on it in a dynamic way based on the data we collect from the users and parteners.
+We use [Mapbox](https://www.mapbox.com/showcase) to show the data on the map in dynamic way.
 
 Mapbox is a location data platform that powers the maps and location services used in many popular apps. 
 
