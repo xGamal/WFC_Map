@@ -76,11 +76,11 @@ map.on('load', () => {
             'circle-color': [
                 'step',
                 ['get', 'point_count'],
-                '#1CFC00', // Green color if the region has less than 100 users
+                '#1CFC00', // Green circle color if the region has less than 100 users
                 100,
-                '#D7D43B', // Yellow color if the region has less than 100 users
-                750,
-                '#D23636' // Red color if the region has less than 100 users
+                '#D7D43B', // Yellow circle color if the region has more than 100 users
+                350,
+                '#D23636' // Red circle color if the region has more than 750 users
             ],
 
             'circle-radius': [
@@ -89,7 +89,7 @@ map.on('load', () => {
                 20,
                 100,
                 30,
-                750,
+                350,
                 40
             ]
         }
