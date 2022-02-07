@@ -25,10 +25,10 @@ We use tools like [geojson-pick](https://github.com/node-geojson/geojson-pick) t
 
 ## Setup
 
-- git pull on the branch main for WFC_map.
+- `git pull` on the `main` branch  for WFC_map.
 
 ## Run 
 
-- start index.html
+- `start index.html`
 
 The code will start to show the map index directly based on the [token](https://docs.mapbox.com/help/getting-started/access-tokens/) which enables the map to connect with the data stored in mapbox platform.
