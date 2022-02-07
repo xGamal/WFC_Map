@@ -54,9 +54,9 @@ map.addControl(new mapboxgl.NavigationControl());
 // The following datasource to be used to test the cases whcih could be used in the actual data for users positions-/
 map.on('load', () => {
 
-    map.addSource('earthquakes', {    // Data source name -
+    map.addSource('userslocation', {    // Data source name -
         type: 'geojson',             // Data source type format 
-        data: 'https://docs.mapbox.com/mapbox-gl-js/assets/earthquakes.geojson', // Data url - to be replaced later with our Geojson url (could be loaded externally and updated synchronously from our database)
+        data: 'https://d2ad6b4ur7yvpq.cloudfront.net/naturalearth-3.3.0/ne_10m_ports.geojson', // Data url - to be replaced later with our Geojson url (could be loaded externally and updated synchronously from our database)
         cluster: true,             // To activate the point_count property in the data source. 
         clusterMaxZoom: 14,       // Max zoom to cluster points on
         clusterRadius: 50        // Radius of each cluster when clustering points (defaults to 50)
@@ -67,7 +67,7 @@ map.on('load', () => {
     map.addLayer({
         id: 'clusters',
         type: 'circle',
-        source: 'earthquakes', 
+        source: 'userslocation', 
 
 
  // The following refers to how many points (users) to be counted as one circle on the map and the color for the circle.
@@ -98,7 +98,7 @@ map.on('load', () => {
     map.addLayer({
         id: 'cluster-count',
         type: 'symbol',
-        source: 'earthquakes', // Clustered Users locations points
+        source: 'userslocation', // Clustered Users locations points
         filter: ['has', 'point_count'],
         
         layout: {
@@ -111,7 +111,7 @@ map.on('load', () => {
     map.addLayer({
         id: 'unclustered-point',
         type: 'circle',
-        source: 'earthquakes',  // Un-Clustered Users location points
+        source: 'userslocation',  // Un-Clustered Users location points
         filter: ['!', ['has', 'point_count']],
         paint: {
             'circle-color': '#11b4da',
@@ -125,14 +125,14 @@ map.on('load', () => {
 // inspecting the Cluster points (users location) on click
 
 //The following database is a sample i use to explain how to deal with the GeoJson file to test which parameters to use and save
-// e.g. "mag" refers to how many comments / votes or other parameter related to the user to give insight about his activity on the platform 
+// e.g. "scalerank" refers to how many comments / votes or other parameter related to the user to give insight about his activity on the platform 
     map.on('click', 'clusters', (e) => {
         const features = map.queryRenderedFeatures(e.point, {
             layers: ['clusters']
         });
         
         const clusterId = features[0].properties.cluster_id;
-        map.getSource('earthquakes').getClusterExpansionZoom( 
+        map.getSource('userslocation').getClusterExpansionZoom( 
             clusterId,
             (err, zoom) => {
                 if (err) return;
@@ -149,7 +149,7 @@ map.on('load', () => {
     map.on('click', 'unclustered-point', (e) => {
         
         const coordinates = e.features[0].geometry.coordinates.slice();
-        const mag = e.features[0].properties.mag;  ///////// mag: The parameter we target in the GeoJson file : Shows specific info about the user when clicked , this info saved alongside with the user location (e.g.How many Questions/Comments or other data the user contributed with in the platform )
+        const scalerank = e.features[0].properties.scalerank;  ///////// mag: The parameter we target in the GeoJson file : Shows specific info about the user when clicked , this info saved alongside with the user location (e.g.How many Questions/Comments or other data the user contributed with in the platform )
     
         // Ensure that if the map is zoomed out such that multiple copies of the feature are visible,
         // the popup appears over the copy being pointed to.
@@ -161,7 +161,7 @@ map.on('load', () => {
         new mapboxgl.Popup()
             .setLngLat(coordinates)
             .setHTML(
-                `This Climate Actioner Contributed with ${mag} Comments and votes!`   //the popup could contain urls / image / paln text / other inputs.
+                `This Climate Actioner Contributed with ${scalerank} Comments and votes!`   //the popup could contain urls / image / paln text / other inputs.
             )
             .addTo(map);
     });
