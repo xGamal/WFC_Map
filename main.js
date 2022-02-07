@@ -24,7 +24,7 @@ zoom: 1                   // starting zoom, set to 1 to have bird veiw when the 
 },);
 
 
-// Adding Geocoded Search bar
+// Geocoded Search bar
 map.addControl(
     new MapboxGeocoder({
     accessToken: mapboxgl.accessToken,
@@ -49,14 +49,14 @@ map.addControl(new mapboxgl.FullscreenControl());
 map.addControl(new mapboxgl.NavigationControl());
   
 
+//- Second step after saving the data into Geojson file: Loading the Data and setting thier properites //
 
-
-// Second step after saving the data into Geojson file : Data loading and setting thier properites //
+// The following datasource to be used to test the cases whcih could be used in the actual data for users positions-/
 map.on('load', () => {
 
-    map.addSource('earthquakes', {    // Data source name
+    map.addSource('earthquakes', {    // Data source name -
         type: 'geojson',             // Data source type format 
-        data: 'https://docs.mapbox.com/mapbox-gl-js/assets/earthquakes.geojson', // Data url (could be loaded externally and updated synchronously from our database)
+        data: 'https://docs.mapbox.com/mapbox-gl-js/assets/earthquakes.geojson', // Data url - to be replaced later with our Geojson url (could be loaded externally and updated synchronously from our database)
         cluster: true,             // To activate the point_count property in the data source. 
         clusterMaxZoom: 14,       // Max zoom to cluster points on
         clusterRadius: 50        // Radius of each cluster when clustering points (defaults to 50)
@@ -98,7 +98,7 @@ map.on('load', () => {
     map.addLayer({
         id: 'cluster-count',
         type: 'symbol',
-        source: 'earthquakes', // Clustered Users location data list
+        source: 'earthquakes', // Clustered Users locations points
         filter: ['has', 'point_count'],
         
         layout: {
@@ -111,7 +111,7 @@ map.on('load', () => {
     map.addLayer({
         id: 'unclustered-point',
         type: 'circle',
-        source: 'earthquakes',  // Un Clustered Users location data list
+        source: 'earthquakes',  // Un-Clustered Users location points
         filter: ['!', ['has', 'point_count']],
         paint: {
             'circle-color': '#11b4da',
@@ -124,15 +124,15 @@ map.on('load', () => {
 
 // inspecting the Cluster points (users location) on click
 
-//The following database is a sample i use to explain how to deal with the GeoJson file (which parameters to use,save)
-// e.g. "mag" refers to 
+//The following database is a sample i use to explain how to deal with the GeoJson file to test which parameters to use and save
+// e.g. "mag" refers to how many comments / votes or other parameter related to the user to give insight about his activity on the platform 
     map.on('click', 'clusters', (e) => {
         const features = map.queryRenderedFeatures(e.point, {
             layers: ['clusters']
         });
         
         const clusterId = features[0].properties.cluster_id;
-        map.getSource('earthquakes').getClusterExpansionZoom( // Data source : Locations list in the Geojson file.
+        map.getSource('earthquakes').getClusterExpansionZoom( 
             clusterId,
             (err, zoom) => {
                 if (err) return;
@@ -149,21 +149,19 @@ map.on('load', () => {
     map.on('click', 'unclustered-point', (e) => {
         
         const coordinates = e.features[0].geometry.coordinates.slice();
-        const mag = e.features[0].properties.mag;  /////////  The parameter we seek in the GeoJson file : Shows specific info about the user when clicked , this info saved alongside with her/his location (e.g.How many Questions/Comments the user participated in )
+        const mag = e.features[0].properties.mag;  ///////// mag: The parameter we target in the GeoJson file : Shows specific info about the user when clicked , this info saved alongside with the user location (e.g.How many Questions/Comments or other data the user contributed with in the platform )
     
-        // Ensure that if the map is zoomed out such that
-        // multiple copies of the feature are visible, the
-        // popup appears over the copy being pointed to.
+        // Ensure that if the map is zoomed out such that multiple copies of the feature are visible,
+        // the popup appears over the copy being pointed to.
         while (Math.abs(e.lngLat.lng - coordinates[0]) > 180) {
             coordinates[0] += e.lngLat.lng > coordinates[0] ? 360 : -360;
         }
 
-
-// This is the pop-up message showed when a specifc user location is ticked
+// The following is the pop-up message showed when a specifc user location is ticked on the map
         new mapboxgl.Popup()
             .setLngLat(coordinates)
             .setHTML(
-                `This Climate Actioner Contributed with ${mag} Comments and votes!`   //pop-up message on the user location.
+                `This Climate Actioner Contributed with ${mag} Comments and votes!`   //the popup could contain urls / image / paln text / other inputs.
             )
             .addTo(map);
     });
@@ -181,9 +179,7 @@ map.on('click', 'places', (e) => {
     // Copy coordinates array.
     const coordinates = e.features[0].geometry.coordinates.slice();
     const description = e.features[0].properties.description;
-     
-    // Ensure that if the map is zoomed out such that multiple copies of the feature are visible, the popup appears
-    // over the copy being pointed to.
+
     while (Math.abs(e.lngLat.lng - coordinates[0]) > 180) {
     coordinates[0] += e.lngLat.lng > coordinates[0] ? 360 : -360;
     }
